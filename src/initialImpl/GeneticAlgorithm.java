@@ -1,7 +1,5 @@
 package initialImpl;
 
-import javax.print.DocFlavor;
-
 public class GeneticAlgorithm {
 
     private int[] targetSolution;

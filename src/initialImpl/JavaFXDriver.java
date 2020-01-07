@@ -16,6 +16,7 @@ import java.util.Arrays;
 public class JavaFXDriver extends Application {
 
     TextArea textArea = null;
+    TextField chromosomeTypeTF = null;
     TextField targetSolutionTF = null;
     TextField populationSizeTF = null;
     TextField mutationRateTF = null;
@@ -63,6 +64,8 @@ public class JavaFXDriver extends Application {
         primaryStage.setTitle("Generic Algorithm Initial Implementation");
         textArea = new TextArea();
         textArea.setMinSize(500, 500);
+        chromosomeTypeTF = new TextField();
+        chromosomeTypeTF.setPromptText("chromosome type...");
         targetSolutionTF = new TextField();
         targetSolutionTF.setPromptText("target solution...");
         populationSizeTF = new TextField();
@@ -75,16 +78,16 @@ public class JavaFXDriver extends Application {
         numberOfEliteChromosomesTF.setPromptText("# of elite chromosomes...");
         tournamentSelectionSizeTF = new TextField();
         tournamentSelectionSizeTF.setPromptText("tournament size...");
-        sendButton = new Button("Send");
+        sendButton = new Button("Run");
         HBox hBox = new HBox();
-        hBox.getChildren().addAll(targetSolutionTF, populationSizeTF, crossoverRateTF, mutationRateTF,
+        hBox.getChildren().addAll(chromosomeTypeTF, targetSolutionTF, populationSizeTF, crossoverRateTF, mutationRateTF,
                 numberOfEliteChromosomesTF, tournamentSelectionSizeTF, sendButton);
         textArea.setEditable(false);
         VBox vBox = new VBox();
         vBox.getChildren().addAll(textArea, hBox);
         StackPane stackPane = new StackPane();
         stackPane.getChildren().add(vBox);
-        primaryStage.setScene(new Scene(stackPane, 1000, 530));
+        primaryStage.setScene(new Scene(stackPane, 1300, 530));
     }
 
     public void printPopulation(Population population, String heading) {
