@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="154.5" y="0.0">main.individuals.IIndividual</node>
+    <node x="410.0" y="599.0">main.operations.IOperation</node>
+    <node x="0.0" y="783.0">main.operations.SinglePointCrossover</node>
+    <node x="130.0" y="177.0">main.individuals.AbstractIndividual</node>
+    <node x="557.0" y="153.0">main.GeneticAlgorithm</node>
+    <node x="593.0" y="807.0">main.operations.BitStringMutation</node>
+    <node x="0.0" y="475.0">main.individuals.BinaryIndividualImpl</node>
+    <node x="731.5" y="704.0">main.operations.IMutation</node>
+    <node x="820.0" y="1052.0">main.individuals.IndividualFactory</node>
+    <node x="266.0" y="500.0">main.individuals.DoubleIndividualImpl</node>
+    <node x="213.5" y="704.0">main.operations.ICrossover</node>
+    <node x="557.0" y="0.0">main.IGeneticAlgorithm</node>
+    <node x="0.0" y="1052.0">main.Population</node>
+    <node x="974.0" y="0.0">main.view.JavaFXAppDriver</node>
+    <node x="389.0" y="1052.0">main.utils.GeneticAlgorithmUtilsService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="main.operations.BitStringMutation" target="main.operations.IMutation">
+      <point x="0.0" y="-88.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="main.individuals.BinaryIndividualImpl" target="main.individuals.AbstractIndividual">
+      <point x="0.0" y="-39.5" />
+      <point x="123.0" y="450.0" />
+      <point x="193.0" y="450.0" />
+      <point x="-63.0" y="124.0" />
+    </edge>
+    <edge source="main.operations.ICrossover" target="main.operations.IOperation">
+      <point x="0.0" y="-14.5" />
+      <point x="286.5" y="679.0" />
+      <point x="476.5" y="679.0" />
+      <point x="-66.5" y="27.5" />
+    </edge>
+    <edge source="main.individuals.DoubleIndividualImpl" target="main.individuals.AbstractIndividual">
+      <point x="0.0" y="-14.5" />
+      <point x="389.0" y="450.0" />
+      <point x="319.0" y="450.0" />
+      <point x="63.0" y="124.0" />
+    </edge>
+    <edge source="main.GeneticAlgorithm" target="main.IGeneticAlgorithm">
+      <point x="0.0" y="-172.0" />
+      <point x="0.0" y="51.5" />
+    </edge>
+    <edge source="main.operations.IMutation" target="main.operations.IOperation">
+      <point x="0.0" y="-14.5" />
+      <point x="799.5" y="679.0" />
+      <point x="609.5" y="679.0" />
+      <point x="66.5" y="27.5" />
+    </edge>
+    <edge source="main.individuals.AbstractIndividual" target="main.individuals.IIndividual">
+      <point x="0.0" y="-124.0" />
+      <point x="0.0" y="63.5" />
+    </edge>
+    <edge source="main.operations.SinglePointCrossover" target="main.operations.ICrossover">
+      <point x="0.0" y="-112.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="560.0" y="425.5" />
+  <SelectedNodes>
+    <node>main.individuals.IIndividual</node>
+    <node>main.operations.IOperation</node>
+    <node>main.operations.SinglePointCrossover</node>
+    <node>main.individuals.AbstractIndividual</node>
+    <node>main.GeneticAlgorithm</node>
+    <node>main.operations.BitStringMutation</node>
+    <node>main.individuals.BinaryIndividualImpl</node>
+    <node>main.operations.IMutation</node>
+    <node>main.individuals.IndividualFactory</node>
+    <node>main.individuals.DoubleIndividualImpl</node>
+    <node>main.operations.ICrossover</node>
+    <node>main.IGeneticAlgorithm</node>
+    <node>main.Population</node>
+    <node>main.view.JavaFXAppDriver</node>
+    <node>main.utils.GeneticAlgorithmUtilsService</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
