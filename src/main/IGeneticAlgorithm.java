@@ -1,14 +1,14 @@
 package main;
 
-import java.util.LinkedList;
+import main.operations.IOperation;
+
+import java.util.List;
 
 public interface IGeneticAlgorithm {
 
-    Population initialize();
+    Population createGeneration(List<IOperation> operations);
 
     Population evaluateFitness(Population population);
-
-    Population createGeneration(LinkedList<IOperation> operations);
 
     boolean terminationCondition(Population population);
 

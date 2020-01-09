@@ -1,6 +1,11 @@
 package main;
 
-public class GeneticAlgorithm {
+import main.individuals.IIndividual;
+import main.operations.IOperation;
+
+import java.util.List;
+
+public class GeneticAlgorithm implements IGeneticAlgorithm {
 
     protected IIndividual targetSolution;
     protected double crossoverRate;
@@ -16,5 +21,39 @@ public class GeneticAlgorithm {
         this.numbOfEliteIndividuals = numbOfEliteIndividuals;
         this.tournamentSelectionSize = tournamentSelectionSize;
         this.population = population;
+    }
+
+    public int getNumbOfEliteIndividuals() {
+        return numbOfEliteIndividuals;
+    }
+
+    public double getMutationRate() {
+        return mutationRate;
+    }
+
+    public double getCrossoverRate() {
+        return crossoverRate;
+    }
+
+    public int getTournamentSelectionSize() {
+        return tournamentSelectionSize;
+    }
+
+    @Override
+    public Population createGeneration(List<IOperation> operations) {
+        operations.forEach(operation -> {
+            population = operation.execute(population);
+        });
+        return population;
+    }
+
+    @Override
+    public Population evaluateFitness(Population population) {
+        return null;
+    }
+
+    @Override
+    public boolean terminationCondition(Population population) {
+        return false;
     }
 }
