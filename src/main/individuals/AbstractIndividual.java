@@ -3,10 +3,10 @@ package main.individuals;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractIndividual<T> implements IIndividual<T> {
+public abstract class AbstractIndividual<T> implements IIndividual<T> {
 
-    protected int fitness = 0;
     protected boolean isFitnessChanged = true;
+    protected int targetIndividualFitness;
     protected List<T> targetIndividualGenes;
     protected List<T> genes;
     protected int chromosomeSize;
@@ -15,12 +15,9 @@ public class AbstractIndividual<T> implements IIndividual<T> {
         this.genes = new ArrayList<>();
         this.targetIndividualGenes = targetIndividualGenes;
         this.chromosomeSize = targetIndividualGenes.size();
+        this.targetIndividualFitness = getTargetIndividualGenes().size();
     }
 
-    @Override
-    public void setFitness(int fitnessLevel) {
-        this.fitness = fitnessLevel;
-    }
 
     @Override
     public List<T> getGenes() {
@@ -34,12 +31,13 @@ public class AbstractIndividual<T> implements IIndividual<T> {
     }
 
     @Override
+    public abstract int getFitness();
+
+
+    @Override
     public void setGenes(List<T> genes) {
         this.genes = genes;
     }
 
-    @Override
-    public int getFitness() {
-        return fitness;
-    }
+
 }

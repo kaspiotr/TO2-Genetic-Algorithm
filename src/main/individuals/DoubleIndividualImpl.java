@@ -14,14 +14,6 @@ public class DoubleIndividualImpl extends AbstractIndividual<Double> {
 
     @Override
     public int getFitness() {
-        if (isFitnessChanged) {
-            fitness = recalculateFitness();
-            isFitnessChanged = false;
-        }
-        return fitness;
-    }
-
-    public int recalculateFitness() {
         int similarity = 0;
         System.out.println(similarity);
         for (int i = 0; i < genes.size(); i++) {
@@ -32,5 +24,6 @@ public class DoubleIndividualImpl extends AbstractIndividual<Double> {
         }
         return similarity;
     }
+
 
 }

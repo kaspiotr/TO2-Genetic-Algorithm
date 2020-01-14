@@ -30,10 +30,11 @@ public class BitStringMutation implements IMutation {
                 this.mutateBehavior = new MutateIntegerBehavior(factory, mutationRate);
                 break;
             case "Double":
-                System.out.println("WPADLISMY!!!");
                 this.mutateBehavior = new MutateDoubleBehavior(factory, mutationRate);
                 break;
             case "Character":
+                System.out.println("WPADLISMY!!!");
+
                 this.mutateBehavior = new MutateCharBehavior(factory, mutationRate);
                 break;
             default:
@@ -43,11 +44,11 @@ public class BitStringMutation implements IMutation {
 
     @Override
     public Population execute(Population population) {
-        Population mutatePopulation = new Population(factory, population.getTargetIndividual(), population.getPopulationSize(), population.getIndividualType());
-        for (int i = 0; i < numbOfEliteIndividuals; i++) {
-            mutatePopulation.getIndividuals().get(i).setGenes(population.getIndividuals().get(i).getGenes());
-        }
-        for (int i = numbOfEliteIndividuals; i < population.getPopulationSize(); i++) {
+        Population mutatePopulation = new Population(factory, population.getPopulationSize(), population.getIndividualType());
+//        for (int i = 0; i < numbOfEliteIndividuals; i++) {
+//            mutatePopulation.getIndividuals().get(i).setGenes(population.getIndividuals().get(i).getGenes());
+//        }
+        for (int i = 0; i < population.getPopulationSize(); i++) {
             mutatePopulation.getIndividuals().set(i, mutateIndividualGenes(mutatePopulation.getIndividuals().get(i), individualType));
         }
         return mutatePopulation;
@@ -55,15 +56,6 @@ public class BitStringMutation implements IMutation {
 
     private IIndividual mutateIndividualGenes(IIndividual individual, String individualType) {
         return mutateBehavior.mutateIndividual(individual);
-//        IIndividual mutateIndividual = IndividualFactory.createIndividual(individualType, GeneticAlgorithmUtilsService.targetIndividualGenesToString(individual));
-//        for (int i = 0; i < individual.getGenes().size(); i++) {
-//            if (Math.random() <= mutationRate) {
-//                if (Math.random() <= 0.5) mutateIndividual.getGenes().set(i, 1);
-//                else mutateIndividual.getGenes().set(i, 0);
-//            } else {
-//                mutateIndividual.getGenes().set(i, individual.getGenes().get(i));
-//            }
-//        }
-//        return mutateIndividual;
+
     }
 }

@@ -12,6 +12,5 @@ public interface IIndividual<T> {
 
     int getFitness();
 
-    void setFitness(int fitnessLevel);
 
 }

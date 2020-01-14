@@ -17,5 +17,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="java_fx_13_grzes" level="application" />
   </component>
 </module>

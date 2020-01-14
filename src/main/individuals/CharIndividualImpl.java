@@ -15,22 +15,17 @@ public class CharIndividualImpl extends AbstractIndividual<Character> {
 
     @Override
     public int getFitness() {
-        if (isFitnessChanged) {
-            fitness = recalculateFitness();
-            isFitnessChanged = false;
-        }
-        return fitness;
-    }
-
-    public int recalculateFitness() {
         int similarity = 0;
 
         for(int i=0;i<genes.size();i++){
             if((genes.get(i)).equals(targetIndividualGenes.get(i))){
                 similarity++;
             }
-        }
 
+        }
+        System.out.println(similarity);
         return similarity;
     }
+
+
 }

@@ -14,19 +14,13 @@ public class BinaryIndividualImpl extends AbstractIndividual<Integer>{
 
     @Override
     public int getFitness() {
-        if (isFitnessChanged) {
-            fitness = recalculateFitness();
-            isFitnessChanged = false;
-        }
-        return fitness;
-    }
-
-    public int recalculateFitness() {
         int individualFitness = 0;
         for (int i = 0; i < genes.size(); i++) {
             if (genes.get(i) == targetIndividualGenes.get(i))
                 individualFitness++;
         }
+        System.out.println(individualFitness);
         return individualFitness;
     }
+
 }
