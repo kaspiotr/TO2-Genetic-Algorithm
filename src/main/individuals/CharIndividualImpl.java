@@ -3,12 +3,13 @@ package main.individuals;
 import java.util.List;
 import java.util.Random;
 
-public class DoubleIndividualImpl extends AbstractIndividual<Double> {
+public class CharIndividualImpl extends AbstractIndividual<Character> {
 
-    public DoubleIndividualImpl(List<Double> targetIndividualGenes) {
+    public CharIndividualImpl(List<Character> targetIndividualGenes) {
         super(targetIndividualGenes);
+        String alphabet = "ABCDEFGHIJKLMNOPRSTUVWYZ";
         for (int i = 0; i < chromosomeSize; i++) {
-            genes.add(i, new Random().nextDouble());
+            genes.add(i, alphabet.charAt(new Random().nextInt(alphabet.length())));
         }
     }
 
@@ -23,14 +24,13 @@ public class DoubleIndividualImpl extends AbstractIndividual<Double> {
 
     public int recalculateFitness() {
         int similarity = 0;
-        System.out.println(similarity);
-        for (int i = 0; i < genes.size(); i++) {
-            double a = genes.get(i);
-            double b = targetIndividualGenes.get(i);
-            if (Math.abs(a - b) < 0.1)
+
+        for(int i=0;i<genes.size();i++){
+            if((genes.get(i)).equals(targetIndividualGenes.get(i))){
                 similarity++;
+            }
         }
+
         return similarity;
     }
-
 }

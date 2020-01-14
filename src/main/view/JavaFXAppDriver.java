@@ -29,7 +29,8 @@ public class JavaFXAppDriver extends Application {
     TextArea textArea = null;
     private ObservableList<String> options = FXCollections.observableArrayList(
             "Integer",
-            "Double"
+            "Double",
+            "Character"
     );
     final ComboBox<String> individualTypeCB = new ComboBox<>(options);
     TextField targetSolutionTF = null;
@@ -55,13 +56,34 @@ public class JavaFXAppDriver extends Application {
         tournamentSelectionSizeTF.setText("2");
     }
 
+    public void testDouble(){
+        targetSolutionTF.setText("0.0,0.0,0.0,0.0");
+        populationSizeTF.setText("10");
+        crossoverRateTF.setText("0.75");
+        mutationRateTF.setText("0.1");
+        numberOfEliteIndividualsTF.setText("3");
+        tournamentSelectionSizeTF.setText("2");
+    }
+
+    public void testChar(){
+        targetSolutionTF.setText("A,B,C,D,E,F,G,H");
+        populationSizeTF.setText("10");
+        crossoverRateTF.setText("0.75");
+        mutationRateTF.setText("0.2");
+        numberOfEliteIndividualsTF.setText("3");
+        tournamentSelectionSizeTF.setText("2");
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         initializeControls(primaryStage);
         runButton.setOnAction(e -> {
-            testBinary();
-            IIndividual individual = IndividualFactory.createIndividual(individualTypeCB.getSelectionModel().getSelectedItem(), targetSolutionTF.getText());
-            population = new Population(individual, new Integer(populationSizeTF.getText()), individualTypeCB.getSelectionModel().getSelectedItem());
+//            testBinary();
+//            testDouble();
+            testChar();
+            IndividualFactory factory = new IndividualFactory(individualTypeCB.getSelectionModel().getSelectedItem(), targetSolutionTF.getText());
+            IIndividual individual = factory.getTargetIndividual();
+            population = new Population(factory, individual, new Integer(populationSizeTF.getText()), individualTypeCB.getSelectionModel().getSelectedItem());
             geneticAlgorithm = new GeneticAlgorithm(individual,
                     new Double(crossoverRateTF.getText()),
                     new Double(mutationRateTF.getText()),
@@ -74,8 +96,8 @@ public class JavaFXAppDriver extends Application {
                 textArea.appendText("Generation # 0 " + " | Fittest individual fitness: " + population.getIndividuals().get(0).getFitness() + "\n");
                 printPopulation(population, "Target Individual: " + population.getTargetIndividual().getGenes() + "\n");
                 int generationNumber = 0;
-                IOperation crossover = new SinglePointCrossover(population, geneticAlgorithm.getNumbOfEliteIndividuals(), geneticAlgorithm.getCrossoverRate(), individualTypeCB.getSelectionModel().getSelectedItem(), geneticAlgorithm.getTournamentSelectionSize());
-                IOperation mutation = new BitStringMutation(population, geneticAlgorithm.getNumbOfEliteIndividuals(), geneticAlgorithm.getMutationRate(), individualTypeCB.getSelectionModel().getSelectedItem());
+                IOperation crossover = new SinglePointCrossover(factory, population, geneticAlgorithm.getNumbOfEliteIndividuals(), geneticAlgorithm.getCrossoverRate(), individualTypeCB.getSelectionModel().getSelectedItem(), geneticAlgorithm.getTournamentSelectionSize());
+                IOperation mutation = new BitStringMutation(factory, population, geneticAlgorithm.getNumbOfEliteIndividuals(), geneticAlgorithm.getMutationRate(), individualTypeCB.getSelectionModel().getSelectedItem());
                 List<IOperation> operationsOnPopulation = new ArrayList<>();
                 operationsOnPopulation.add(crossover);
                 operationsOnPopulation.add(mutation);

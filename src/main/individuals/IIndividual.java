@@ -14,5 +14,4 @@ public interface IIndividual<T> {
 
     void setFitness(int fitnessLevel);
 
-    int recalculateFitness();
 }

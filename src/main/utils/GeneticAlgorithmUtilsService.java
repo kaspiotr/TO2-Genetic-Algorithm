@@ -24,6 +24,12 @@ public class GeneticAlgorithmUtilsService {
                 .collect(Collectors.toList());
     }
 
+    public static List<Character> getCharacterGenesList(String genesString) {
+        return Arrays.stream(genesString.split(","))
+                .map(s -> s.charAt(0))
+                .collect(Collectors.toList());
+    }
+
     public static String targetIndividualGenesToString(IIndividual individual) {
         return individual.getTargetIndividualGenes()
                 .toString()

@@ -13,12 +13,20 @@ public class BinaryIndividualImpl extends AbstractIndividual<Integer>{
     }
 
     @Override
-    public List<Integer> getGenes() {
-        return super.getGenes();
+    public int getFitness() {
+        if (isFitnessChanged) {
+            fitness = recalculateFitness();
+            isFitnessChanged = false;
+        }
+        return fitness;
     }
 
-    @Override
-    public void setGenes(List<Integer> genes) {
-        super.setGenes(genes);
+    public int recalculateFitness() {
+        int individualFitness = 0;
+        for (int i = 0; i < genes.size(); i++) {
+            if (genes.get(i) == targetIndividualGenes.get(i))
+                individualFitness++;
+        }
+        return individualFitness;
     }
 }

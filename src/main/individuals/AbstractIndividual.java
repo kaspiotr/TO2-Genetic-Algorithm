@@ -18,6 +18,11 @@ public class AbstractIndividual<T> implements IIndividual<T> {
     }
 
     @Override
+    public void setFitness(int fitnessLevel) {
+        this.fitness = fitnessLevel;
+    }
+
+    @Override
     public List<T> getGenes() {
         isFitnessChanged = true;
         return genes;
@@ -35,26 +40,6 @@ public class AbstractIndividual<T> implements IIndividual<T> {
 
     @Override
     public int getFitness() {
-        if (isFitnessChanged) {
-            fitness = recalculateFitness();
-            isFitnessChanged = false;
-        }
         return fitness;
     }
-
-    @Override
-    public void setFitness(int fitness) {
-        this.fitness = fitness;
-    }
-
-    @Override
-    public int recalculateFitness() {
-        int individualFitness = 0;
-        for (int i = 0; i < genes.size(); i++) {
-            if (genes.get(i) == targetIndividualGenes.get(i))
-                individualFitness++;
-        }
-        return individualFitness;
-    }
-
 }

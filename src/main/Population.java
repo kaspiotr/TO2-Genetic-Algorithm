@@ -2,19 +2,20 @@ package main;
 
 import main.individuals.IIndividual;
 import main.individuals.IndividualFactory;
-import main.utils.GeneticAlgorithmUtilsService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Population {
 
+    private IndividualFactory factory;
     private IIndividual targetIndividual;
     private int populationSize;
     private List<IIndividual> individuals;
     private String individualType;
 
-    public Population(IIndividual targetIndividual, int populationSize, String individualType) {
+    public Population(IndividualFactory factory, IIndividual targetIndividual, int populationSize, String individualType) {
+        this.factory = factory;
         this.targetIndividual = targetIndividual;
         List genesList = targetIndividual.getTargetIndividualGenes();
         targetIndividual.setFitness(genesList.size());
@@ -23,7 +24,7 @@ public class Population {
         this.individuals = new ArrayList<>();
         this.individualType = individualType;
         for (int i = 0; i < populationSize; i++) {
-            individuals.add(IndividualFactory.createIndividual(individualType, GeneticAlgorithmUtilsService.targetIndividualGenesToString(targetIndividual)));
+            individuals.add(factory.createIndividual());
         }
         sortIndividualByChromosomeFitness();
     }
