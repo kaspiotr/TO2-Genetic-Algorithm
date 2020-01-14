@@ -1,6 +1,5 @@
 package main;
 
-import jdk.dynalink.Operation;
 import main.individuals.IIndividual;
 import main.operations.IOperation;
 
@@ -41,16 +40,18 @@ public class GeneticAlgorithm implements IGeneticAlgorithm {
     }
 
     @Override
-    public Population createGeneration(Population population, List<IOperation> operations) {
+    public Population createGeneration(List<IOperation> operations) {
         for(IOperation operation: operations){
-            this.population = operation.execute(population);
+            this.population = operation.execute(this.population);
 
         }
 
         return this.population;
     }
 
-
+    public Population getPopulation() {
+        return population;
+    }
 
     @Override
     public boolean terminationCondition(Population population) {

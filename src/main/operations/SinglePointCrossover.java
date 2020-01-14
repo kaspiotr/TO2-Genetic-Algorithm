@@ -29,8 +29,6 @@ public class SinglePointCrossover implements ICrossover {
         for (int i = 0; i < numbOfEliteIndividuals; i++) {
             crossoverPopulation.getIndividuals().get(i).setGenes(population.getIndividuals().get(i).getGenes());
         }
-        crossoverPopulation.sortIndividualByChromosomeFitness();
-
         IIndividual individual1 = null;
         IIndividual individual2 = null;
         for (int i = numbOfEliteIndividuals; i < population.getIndividuals().size(); i++) {

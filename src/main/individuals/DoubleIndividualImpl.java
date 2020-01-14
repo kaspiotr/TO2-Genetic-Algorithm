@@ -19,7 +19,7 @@ public class DoubleIndividualImpl extends AbstractIndividual<Double> {
         for (int i = 0; i < genes.size(); i++) {
             double a = genes.get(i);
             double b = targetIndividualGenes.get(i);
-            if (Math.abs(a - b) < 0.1)
+            if (Math.abs(a - b) < 0.05)
                 similarity++;
         }
         return similarity;

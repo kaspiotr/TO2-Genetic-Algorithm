@@ -40,7 +40,6 @@ public class JavaFXAppDriver extends Application {
     TextField numberOfEliteIndividualsTF = null;
     TextField tournamentSelectionSizeTF = null;
     Button runButton = null;
-    Population population;
     GeneticAlgorithm geneticAlgorithm;
 
     public static void main(String[] args) {
@@ -78,12 +77,12 @@ public class JavaFXAppDriver extends Application {
     public void start(Stage primaryStage) throws Exception {
         initializeControls(primaryStage);
         runButton.setOnAction(e -> {
-            testBinary();
-//            testDouble();
+//            testBinary();
+            testDouble();
 //            testChar();
             IndividualFactory factory = new IndividualFactory(individualTypeCB.getSelectionModel().getSelectedItem(), targetSolutionTF.getText());
             IIndividual individual = factory.getTargetIndividual();
-            population = new Population(factory, new Integer(populationSizeTF.getText()), individualTypeCB.getSelectionModel().getSelectedItem());
+            Population population = new Population(factory, new Integer(populationSizeTF.getText()), individualTypeCB.getSelectionModel().getSelectedItem());
             geneticAlgorithm = new GeneticAlgorithm(individual,
                     new Double(crossoverRateTF.getText()),
                     new Double(mutationRateTF.getText()),
@@ -93,21 +92,21 @@ public class JavaFXAppDriver extends Application {
             Platform.runLater(() -> {
                 textArea.clear();
                 textArea.appendText("----------------------------------------------------------------------------------------------------\n");
-                textArea.appendText("Generation # 0 " + " | Fittest individual fitness: " + population.getIndividuals().get(0).getFitness() + "\n");
-                printPopulation(population, "Target Individual: " + factory.getTargetIndividual().getGenes() + "\n");
+                textArea.appendText("Generation # 0 " + " | Fittest individual fitness: " + geneticAlgorithm.getPopulation().getIndividuals().get(0).getFitness() + "\n");
+                printPopulation(geneticAlgorithm.getPopulation(), "Target Individual: " + factory.getTargetIndividual().getGenes() + "\n");
                 int generationNumber = 0;
-                IOperation crossover = new SinglePointCrossover(factory, population, geneticAlgorithm.getNumbOfEliteIndividuals(), geneticAlgorithm.getCrossoverRate(), individualTypeCB.getSelectionModel().getSelectedItem(), geneticAlgorithm.getTournamentSelectionSize());
-                IOperation mutation = new BitStringMutation(factory, population, geneticAlgorithm.getNumbOfEliteIndividuals(), geneticAlgorithm.getMutationRate(), individualTypeCB.getSelectionModel().getSelectedItem());
+                IOperation crossover = new SinglePointCrossover(factory, geneticAlgorithm.getPopulation(), geneticAlgorithm.getNumbOfEliteIndividuals(), geneticAlgorithm.getCrossoverRate(), individualTypeCB.getSelectionModel().getSelectedItem(), geneticAlgorithm.getTournamentSelectionSize());
+                IOperation mutation = new BitStringMutation(factory, geneticAlgorithm.getPopulation(), geneticAlgorithm.getNumbOfEliteIndividuals(), geneticAlgorithm.getMutationRate(), individualTypeCB.getSelectionModel().getSelectedItem());
                 List<IOperation> operationsOnPopulation = new ArrayList<>();
                 operationsOnPopulation.add(mutation);
                 operationsOnPopulation.add(crossover);
-                while (population.getIndividuals().get(0).getFitness() < factory.getTargetIndividual().getGenes().size()) {
+                while (geneticAlgorithm.getPopulation().getIndividuals().get(0).getFitness() < factory.getTargetIndividual().getGenes().size()) {
                     generationNumber++;
                     textArea.appendText("----------------------------------------------------------------------------------------------------\n");
-                    population = geneticAlgorithm.createGeneration(population, operationsOnPopulation);
-                    population.sortIndividualByChromosomeFitness();
-                    textArea.appendText("Generation # " + generationNumber + " | Fittest individual fitness: " + population.getIndividuals().get(0).getFitness() + "\n");
-                    printPopulation(population, "Target Individual: "  + factory.getTargetIndividual().getGenes());
+                    geneticAlgorithm.createGeneration(operationsOnPopulation);
+                    geneticAlgorithm.getPopulation().sortIndividualByChromosomeFitness();
+                    textArea.appendText("Generation # " + generationNumber + " | Fittest individual fitness: " + geneticAlgorithm.getPopulation().getIndividuals().get(0).getFitness() + "\n");
+                    printPopulation(geneticAlgorithm.getPopulation(), "Target Individual: "  + factory.getTargetIndividual().getGenes());
                 }
                 textArea.appendText("Algorithm has finished");
             });
