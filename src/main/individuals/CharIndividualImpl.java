@@ -18,7 +18,7 @@ public class CharIndividualImpl extends AbstractIndividual<Character> {
         int similarity = 0;
 
         for (int i = 0; i < genes.size(); i++) {
-            if (genes.get(i) == targetIndividualGenes.get(i)) {
+            if ((genes.get(i)).equals(targetIndividualGenes.get(i))) {
                 similarity++;
             }
 

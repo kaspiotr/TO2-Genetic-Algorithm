@@ -78,8 +78,8 @@ public class JavaFXAppDriver extends Application {
         initializeControls(primaryStage);
         runButton.setOnAction(e -> {
 //            testBinary();
-            testDouble();
-//            testChar();
+//            testDouble();
+            testChar();
             IndividualFactory factory = new IndividualFactory(individualTypeCB.getSelectionModel().getSelectedItem(), targetSolutionTF.getText());
             IIndividual individual = factory.getTargetIndividual();
             Population population = new Population(factory, new Integer(populationSizeTF.getText()), individualTypeCB.getSelectionModel().getSelectedItem());
@@ -102,6 +102,7 @@ public class JavaFXAppDriver extends Application {
                 operationsOnPopulation.add(crossover);
                 while (geneticAlgorithm.getPopulation().getIndividuals().get(0).getFitness() < factory.getTargetIndividual().getGenes().size()) {
                     generationNumber++;
+                    System.out.println("GENERATION: " + generationNumber);
                     textArea.appendText("----------------------------------------------------------------------------------------------------\n");
                     geneticAlgorithm.createGeneration(operationsOnPopulation);
                     geneticAlgorithm.getPopulation().sortIndividualByChromosomeFitness();
