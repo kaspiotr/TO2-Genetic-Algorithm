@@ -40,11 +40,11 @@ public class GeneticAlgorithm implements IGeneticAlgorithm {
     }
 
     @Override
-    public Population createGeneration(List<IOperation> operations) {
+    public Population createGeneration(Population population, List<IOperation> operations) {
         operations.forEach(operation -> {
-            population = operation.execute(population);
+            this.population = operation.execute(population);
         });
-        return population;
+        return this.population;
     }
 
     @Override

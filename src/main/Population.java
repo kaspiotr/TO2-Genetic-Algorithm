@@ -16,6 +16,9 @@ public class Population {
 
     public Population(IIndividual targetIndividual, int populationSize, String individualType) {
         this.targetIndividual = targetIndividual;
+        List genesList = targetIndividual.getTargetIndividualGenes();
+        targetIndividual.setFitness(genesList.size());
+        targetIndividual.setGenes(genesList);
         this.populationSize = populationSize;
         this.individuals = new ArrayList<>();
         this.individualType = individualType;

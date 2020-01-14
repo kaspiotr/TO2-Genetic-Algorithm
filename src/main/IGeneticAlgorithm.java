@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IGeneticAlgorithm {
 
-    Population createGeneration(List<IOperation> operations);
+    Population createGeneration(Population population, List<IOperation> operations);
 
     Population evaluateFitness(Population population);
 

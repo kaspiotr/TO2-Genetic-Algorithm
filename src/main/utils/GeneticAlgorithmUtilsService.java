@@ -25,7 +25,7 @@ public class GeneticAlgorithmUtilsService {
     }
 
     public static String targetIndividualGenesToString(IIndividual individual) {
-        return individual.getGenes()
+        return individual.getTargetIndividualGenes()
                 .toString()
                 .replace("[", "")
                 .replace("]", "");

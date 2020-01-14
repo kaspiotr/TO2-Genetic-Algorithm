@@ -39,7 +39,7 @@ public class BitStringMutation implements IMutation {
                 if (Math.random() <= 0.5) mutateIndividual.getGenes().set(i, 1);
                 else mutateIndividual.getGenes().set(i, 0);
             } else {
-                mutateIndividual.getGenes().set(i, 0);
+                mutateIndividual.getGenes().set(i, individual.getGenes().get(i));
             }
         }
         return mutateIndividual;

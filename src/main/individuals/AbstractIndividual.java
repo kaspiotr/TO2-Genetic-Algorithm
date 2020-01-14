@@ -24,6 +24,11 @@ public class AbstractIndividual<T> implements IIndividual<T> {
     }
 
     @Override
+    public List<T> getTargetIndividualGenes() {
+        return targetIndividualGenes;
+    }
+
+    @Override
     public void setGenes(List<T> genes) {
         this.genes = genes;
     }
@@ -35,6 +40,11 @@ public class AbstractIndividual<T> implements IIndividual<T> {
             isFitnessChanged = false;
         }
         return fitness;
+    }
+
+    @Override
+    public void setFitness(int fitness) {
+        this.fitness = fitness;
     }
 
     @Override

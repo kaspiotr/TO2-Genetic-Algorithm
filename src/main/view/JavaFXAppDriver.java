@@ -19,6 +19,7 @@ import main.individuals.IndividualFactory;
 import main.operations.BitStringMutation;
 import main.operations.IOperation;
 import main.operations.SinglePointCrossover;
+import main.utils.GeneticAlgorithmUtilsService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,10 +46,20 @@ public class JavaFXAppDriver extends Application {
         launch(args);
     }
 
+    public void testBinary(){
+        targetSolutionTF.setText("1,1,1,1,0,0,0,0");
+        populationSizeTF.setText("10");
+        crossoverRateTF.setText("0.75");
+        mutationRateTF.setText("0.2");
+        numberOfEliteIndividualsTF.setText("3");
+        tournamentSelectionSizeTF.setText("2");
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         initializeControls(primaryStage);
         runButton.setOnAction(e -> {
+            testBinary();
             IIndividual individual = IndividualFactory.createIndividual(individualTypeCB.getSelectionModel().getSelectedItem(), targetSolutionTF.getText());
             population = new Population(individual, new Integer(populationSizeTF.getText()), individualTypeCB.getSelectionModel().getSelectedItem());
             geneticAlgorithm = new GeneticAlgorithm(individual,
@@ -71,11 +82,12 @@ public class JavaFXAppDriver extends Application {
                 while (population.getIndividuals().get(0).getFitness() < population.getTargetIndividual().getGenes().size()) {
                     generationNumber++;
                     textArea.appendText("----------------------------------------------------------------------------------------------------\n");
-                    population = geneticAlgorithm.createGeneration(operationsOnPopulation);
+                    population = geneticAlgorithm.createGeneration(population, operationsOnPopulation);
                     population.sortIndividualByChromosomeFitness();
                     textArea.appendText("Generation # " + generationNumber + " | Fittest individual fitness: " + population.getIndividuals().get(0).getFitness() + "\n");
                     printPopulation(population, "Target Individual: "  + population.getTargetIndividual().getGenes());
                 }
+                textArea.appendText("Algorithm has finished");
             });
         });
         primaryStage.show();

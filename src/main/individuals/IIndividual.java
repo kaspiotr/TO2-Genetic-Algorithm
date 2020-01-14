@@ -8,7 +8,11 @@ public interface IIndividual<T> {
 
     List<T> getGenes();
 
+    List<T> getTargetIndividualGenes();
+
     int getFitness();
+
+    void setFitness(int fitnessLevel);
 
     int recalculateFitness();
 }
