@@ -78,9 +78,9 @@ public class JavaFXAppDriver extends Application {
     public void start(Stage primaryStage) throws Exception {
         initializeControls(primaryStage);
         runButton.setOnAction(e -> {
-//            testBinary();
+            testBinary();
 //            testDouble();
-            testChar();
+//            testChar();
             IndividualFactory factory = new IndividualFactory(individualTypeCB.getSelectionModel().getSelectedItem(), targetSolutionTF.getText());
             IIndividual individual = factory.getTargetIndividual();
             Population population = new Population(factory, new Integer(populationSizeTF.getText()), individualTypeCB.getSelectionModel().getSelectedItem());
