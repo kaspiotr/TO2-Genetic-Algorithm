@@ -1,7 +1,5 @@
 package main.utils;
 
-import main.individuals.IIndividual;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
