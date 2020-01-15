@@ -27,26 +27,28 @@ public class SinglePointCrossover implements ICrossover {
     public Population execute(Population population) {
         Population crossoverPopulation = new Population(factory, population.getPopulationSize(), population.getIndividualType());
         for (int i = 0; i < numbOfEliteIndividuals; i++) {
-            crossoverPopulation.getIndividuals().get(i).setGenes(population.getIndividuals().get(i).getGenes());
+            crossoverPopulation.getIndividual(i).setGenes(population.getIndividual(i).getGenes());
         }
         IIndividual individual1 = null;
         IIndividual individual2 = null;
-        for (int i = numbOfEliteIndividuals; i < population.getIndividuals().size(); i++) {
+        for (int i = numbOfEliteIndividuals; i < population.getPopulationSize(); i++) {
             if (Math.random() <= crossoverRate) {
-                individual1 = selectTournamentPopulation(population).getIndividuals().get(0);
-                individual2 = selectTournamentPopulation(population).getIndividuals().get(0);
-                crossoverPopulation.getIndividuals().set(i, crossoverIndividualsChromosomes(individual1, individual2));
+                individual1 = selectTournamentPopulation(population).getIndividual(0);
+                individual2 = selectTournamentPopulation(population).getIndividual(0);
+                crossoverPopulation.setIndividual(i, crossoverIndividualsChromosomes(individual1, individual2));
             } else {
-                crossoverPopulation.getIndividuals().set(i, selectTournamentPopulation(population).getIndividuals().get(0));
+                crossoverPopulation.setIndividual(i, selectTournamentPopulation(population).getIndividual(0));
             }
         }
+
+        crossoverPopulation.sortIndividualByChromosomeFitness();
         return crossoverPopulation;
     }
 
     private Population selectTournamentPopulation(Population population) {
         Population tournamentPopulation = new Population(factory, tournamentSelectionSize, individualType);
         for (int i = 0; i < tournamentSelectionSize; i++) {
-            tournamentPopulation.getIndividuals().set(i, population.getIndividuals().get((int)(Math.random() * population.getIndividuals().size())));
+            tournamentPopulation.setIndividual(i, population.getIndividual((int)(Math.random() * population.getIndividuals().size())));
         }
         tournamentPopulation.sortIndividualByChromosomeFitness();
         return tournamentPopulation;
@@ -55,8 +57,8 @@ public class SinglePointCrossover implements ICrossover {
     private IIndividual crossoverIndividualsChromosomes(IIndividual individual1, IIndividual individual2) {
         IIndividual crossoverIndividual = factory.createIndividual();
         for (int i = 0; i < individual1.getGenes().size(); i++) {
-            if (Math.random() < 0.5) crossoverIndividual.getGenes().set(i, individual1.getGenes().get(i));
-            else crossoverIndividual.getGenes().set(i, individual2.getGenes().get(i));
+            if (Math.random() < 0.5) crossoverIndividual.setGene(i, individual1.getGene(i));
+            else crossoverIndividual.setGene(i, individual2.getGene(i));
         }
         return crossoverIndividual;
     }

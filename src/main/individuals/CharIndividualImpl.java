@@ -8,10 +8,12 @@ public class CharIndividualImpl extends AbstractIndividual<Character> {
     public CharIndividualImpl(List<Character> targetIndividualGenes) {
         super(targetIndividualGenes);
         String alphabet = "ABCDEFGHIJKLMNOPRSTUVWYZ";
-        for (int i = 0; i < chromosomeSize; i++) {
+        for (int i = 0; i < targetIndividualGenes.size(); i++) {
             genes.add(i, alphabet.charAt(new Random().nextInt(alphabet.length())));
         }
     }
+
+
 
     @Override
     public int getFitness() {
@@ -23,7 +25,6 @@ public class CharIndividualImpl extends AbstractIndividual<Character> {
             }
 
         }
-        System.out.println(similarity);
         return similarity;
     }
 

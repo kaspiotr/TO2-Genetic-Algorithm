@@ -44,18 +44,19 @@ public class BitStringMutation implements IMutation {
 
     @Override
     public Population execute(Population population) {
-        Population mutatePopulation = new Population(factory, population.getPopulationSize(), population.getIndividualType());
+        Population mutatedPopulation = new Population(factory, population.getPopulationSize(), population.getIndividualType());
         for (int i = 0; i < numbOfEliteIndividuals; i++) {
-            mutatePopulation.getIndividuals().get(i).setGenes(population.getIndividuals().get(i).getGenes());
+            mutatedPopulation.getIndividual(i).setGenes(population.getIndividual(i).getGenes());
         }
         for (int i = numbOfEliteIndividuals; i < population.getPopulationSize(); i++) {
-            mutatePopulation.getIndividuals().set(i, mutateIndividualGenes(mutatePopulation.getIndividuals().get(i), individualType));
+            mutatedPopulation.setIndividual(i, mutateIndividualGenes(mutatedPopulation.getIndividual(i)));
         }
-        return mutatePopulation;
+        mutatedPopulation.sortIndividualByChromosomeFitness();
+        return mutatedPopulation;
     }
 
-    private IIndividual mutateIndividualGenes(IIndividual individual, String individualType) {
-        return mutateBehavior.mutateIndividual(individual);
+    private IIndividual mutateIndividualGenes(IIndividual individual) {
+        return mutateBehavior.mutateIndividualGenes(individual);
 
     }
 }

@@ -11,15 +11,15 @@ public class MutateCharBehavior extends IMutateBehavior {
     }
 
     @Override
-    public IIndividual mutateIndividual(IIndividual individual) {
+    public IIndividual mutateIndividualGenes(IIndividual individual) {
         String alphabet = "ABCDEFGHIJKLMNOPRSTUVWYZ";
         IIndividual mutateIndividual = factory.createIndividual();
         for (int x = 0; x < individual.getGenes().size(); x++) {
             if (Math.random() <= mutationRate) {
                 Character randomChar = alphabet.charAt(new Random().nextInt(alphabet.length()));
-                mutateIndividual.getGenes().set(x,  randomChar);
+                mutateIndividual.setGene(x,  randomChar);
             } else {
-                mutateIndividual.getGenes().set(x, individual.getGenes().get(x));
+                mutateIndividual.setGene(x, individual.getGene(x));
             }
         }
         return mutateIndividual;

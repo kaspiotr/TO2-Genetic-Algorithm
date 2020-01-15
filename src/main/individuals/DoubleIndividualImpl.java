@@ -7,7 +7,7 @@ public class DoubleIndividualImpl extends AbstractIndividual<Double> {
 
     public DoubleIndividualImpl(List<Double> targetIndividualGenes) {
         super(targetIndividualGenes);
-        for (int i = 0; i < chromosomeSize; i++) {
+        for (int i = 0; i < targetIndividualGenes.size(); i++) {
             genes.add(i, new Random().nextDouble());
         }
     }

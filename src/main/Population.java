@@ -24,6 +24,14 @@ public class Population {
         sortIndividualByChromosomeFitness();
     }
 
+    public IIndividual getIndividual(int index){
+        return individuals.get(index);
+    }
+
+    public IIndividual setIndividual(int index,IIndividual individual){
+        return individuals.set(index,individual);
+    }
+
     public int getPopulationSize() {
         return populationSize;
     }
@@ -35,6 +43,8 @@ public class Population {
     public String getIndividualType() {
         return individualType;
     }
+
+
 
     public void sortIndividualByChromosomeFitness() {
         individuals.sort((individual1, individual2) -> {

@@ -12,5 +12,5 @@ public abstract class IMutateBehavior {
         this.mutationRate = mutationRate;
     }
 
-    public abstract IIndividual mutateIndividual(IIndividual individual);
+    public abstract IIndividual mutateIndividualGenes(IIndividual individual);
 }

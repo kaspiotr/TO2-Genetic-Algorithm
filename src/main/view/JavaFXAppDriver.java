@@ -73,6 +73,7 @@ public class JavaFXAppDriver extends Application {
         tournamentSelectionSizeTF.setText("2");
     }
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         initializeControls(primaryStage);
@@ -98,8 +99,8 @@ public class JavaFXAppDriver extends Application {
                 IOperation crossover = new SinglePointCrossover(factory, geneticAlgorithm.getPopulation(), geneticAlgorithm.getNumbOfEliteIndividuals(), geneticAlgorithm.getCrossoverRate(), individualTypeCB.getSelectionModel().getSelectedItem(), geneticAlgorithm.getTournamentSelectionSize());
                 IOperation mutation = new BitStringMutation(factory, geneticAlgorithm.getPopulation(), geneticAlgorithm.getNumbOfEliteIndividuals(), geneticAlgorithm.getMutationRate(), individualTypeCB.getSelectionModel().getSelectedItem());
                 List<IOperation> operationsOnPopulation = new ArrayList<>();
-                operationsOnPopulation.add(mutation);
                 operationsOnPopulation.add(crossover);
+                operationsOnPopulation.add(mutation);
                 while (geneticAlgorithm.getPopulation().getIndividuals().get(0).getFitness() < factory.getTargetIndividual().getGenes().size()) {
                     generationNumber++;
                     System.out.println("GENERATION: " + generationNumber);
@@ -108,6 +109,7 @@ public class JavaFXAppDriver extends Application {
                     geneticAlgorithm.getPopulation().sortIndividualByChromosomeFitness();
                     textArea.appendText("Generation # " + generationNumber + " | Fittest individual fitness: " + geneticAlgorithm.getPopulation().getIndividuals().get(0).getFitness() + "\n");
                     printPopulation(geneticAlgorithm.getPopulation(), "Target Individual: "  + factory.getTargetIndividual().getGenes());
+                    System.out.println(population.getIndividual(0));
                 }
                 textArea.appendText("Algorithm has finished");
             });
