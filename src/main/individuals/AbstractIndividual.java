@@ -7,12 +7,14 @@ import java.util.stream.Collectors;
 public abstract class AbstractIndividual<T> implements IIndividual<T> {
 
 
-    protected List<T> targetIndividualGenes;
     protected List<T> genes;
+    protected IIndividual targetIndividual;
 
-    public AbstractIndividual(List<T> targetIndividualGenes) {
-        this.genes = new ArrayList<>();
-        this.targetIndividualGenes = targetIndividualGenes;
+    public AbstractIndividual(List<T> genes) {
+        this.genes = genes;
+    }
+
+    public AbstractIndividual() {
     }
 
     @Override
@@ -26,23 +28,12 @@ public abstract class AbstractIndividual<T> implements IIndividual<T> {
     }
 
 
-    @Override
-    public List<T> getTargetIndividualGenes() {
-        return targetIndividualGenes;
-    }
 
     @Override
     public List<T> getGenes() {
         return genes;
     }
 
-    @Override
-    public void setGenes(List<T> newgenes) {
-        genes=new ArrayList<>();
-        for (int i = 0; i < newgenes.size(); i++) {
-            genes.add(newgenes.get(i));
-        }
-    }
 
     @Override
     public String toString(){

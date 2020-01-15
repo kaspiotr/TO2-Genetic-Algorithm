@@ -27,7 +27,8 @@ public class SinglePointCrossover implements ICrossover {
     public Population execute(Population population) {
         Population crossoverPopulation = new Population(factory, population.getPopulationSize(), population.getIndividualType());
         for (int i = 0; i < numbOfEliteIndividuals; i++) {
-            crossoverPopulation.getIndividual(i).setGenes(population.getIndividual(i).getGenes());
+//            crossoverPopulation.getIndividual(i).setGenes(population.getIndividual(i).getGenes());
+            crossoverPopulation.setIndividual(i,population.getIndividual(i));
         }
         IIndividual individual1 = null;
         IIndividual individual2 = null;

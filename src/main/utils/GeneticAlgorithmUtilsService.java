@@ -30,11 +30,4 @@ public class GeneticAlgorithmUtilsService {
                 .collect(Collectors.toList());
     }
 
-    public static String targetIndividualGenesToString(IIndividual individual) {
-        return individual.getTargetIndividualGenes()
-                .toString()
-                .replace("[", "")
-                .replace("]", "");
-    }
-
 }

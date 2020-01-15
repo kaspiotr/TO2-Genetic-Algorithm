@@ -106,10 +106,12 @@ public class JavaFXAppDriver extends Application {
                     System.out.println("GENERATION: " + generationNumber);
                     textArea.appendText("----------------------------------------------------------------------------------------------------\n");
                     geneticAlgorithm.createGeneration(operationsOnPopulation);
-                    geneticAlgorithm.getPopulation().sortIndividualByChromosomeFitness();
-                    textArea.appendText("Generation # " + generationNumber + " | Fittest individual fitness: " + geneticAlgorithm.getPopulation().getIndividuals().get(0).getFitness() + "\n");
+
+                    System.out.println(geneticAlgorithm.getPopulation());
+
+                    textArea.appendText("Generation # " + generationNumber + " | Fittest individual fitness: " + geneticAlgorithm.getPopulation().getIndividual(0).getFitness() + "\n");
                     printPopulation(geneticAlgorithm.getPopulation(), "Target Individual: "  + factory.getTargetIndividual().getGenes());
-                    System.out.println(population.getIndividual(0));
+
                 }
                 textArea.appendText("Algorithm has finished");
             });

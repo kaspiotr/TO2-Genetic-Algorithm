@@ -5,12 +5,10 @@ import main.utils.GeneticAlgorithmUtilsService;
 public class IndividualFactory {
 
    private String targetIndividualType;
-   private String genesString;
    private IIndividual targetIndividual;
 
     public IndividualFactory(String individualType, String genesString) {
         this.targetIndividualType = individualType;
-        this.genesString = genesString;
         switch (individualType) {
             case "Integer":
                 this.targetIndividual = new BinaryIndividualImpl(GeneticAlgorithmUtilsService.getBinaryGenesList(genesString));
@@ -30,11 +28,11 @@ public class IndividualFactory {
    public IIndividual createIndividual() {
        switch (targetIndividualType) {
            case "Integer":
-               return new BinaryIndividualImpl(targetIndividual.getGenes());
+               return new BinaryIndividualImpl(targetIndividual);
            case "Double":
-               return new DoubleIndividualImpl(targetIndividual.getGenes());
+               return new DoubleIndividualImpl(targetIndividual);
            case "Character":
-               return new CharIndividualImpl(targetIndividual.getGenes());
+               return new CharIndividualImpl(targetIndividual);
            default:
                throw new UnsupportedOperationException();
        }

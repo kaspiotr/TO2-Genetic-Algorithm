@@ -33,7 +33,6 @@ public class BitStringMutation implements IMutation {
                 this.mutateBehavior = new MutateDoubleBehavior(factory, mutationRate);
                 break;
             case "Character":
-                System.out.println("WPADLISMY!!!");
 
                 this.mutateBehavior = new MutateCharBehavior(factory, mutationRate);
                 break;
@@ -46,12 +45,11 @@ public class BitStringMutation implements IMutation {
     public Population execute(Population population) {
         Population mutatedPopulation = new Population(factory, population.getPopulationSize(), population.getIndividualType());
         for (int i = 0; i < numbOfEliteIndividuals; i++) {
-            mutatedPopulation.getIndividual(i).setGenes(population.getIndividual(i).getGenes());
+            mutatedPopulation.setIndividual(i,population.getIndividual(i));
         }
         for (int i = numbOfEliteIndividuals; i < population.getPopulationSize(); i++) {
-            mutatedPopulation.setIndividual(i, mutateIndividualGenes(mutatedPopulation.getIndividual(i)));
+            mutatedPopulation.setIndividual(i, mutateIndividualGenes(population.getIndividual(i)));
         }
-        mutatedPopulation.sortIndividualByChromosomeFitness();
         return mutatedPopulation;
     }
 

@@ -11,12 +11,6 @@ public interface IIndividual<T> {
 
     void setGene(int index, T gene);
 
-    List<T> getTargetIndividualGenes();
-
-
-    void setGenes(List<T> newgenes);
-
     int getFitness();
-
 
 }
