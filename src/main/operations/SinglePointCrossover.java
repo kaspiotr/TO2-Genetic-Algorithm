@@ -3,7 +3,6 @@ package main.operations;
 import main.Population;
 import main.individuals.IIndividual;
 import main.individuals.IndividualFactory;
-import main.utils.GeneticAlgorithmUtilsService;
 
 public class SinglePointCrossover implements ICrossover {
 
@@ -27,8 +26,7 @@ public class SinglePointCrossover implements ICrossover {
     public Population execute(Population population) {
         Population crossoverPopulation = new Population(factory, population.getPopulationSize(), population.getIndividualType());
         for (int i = 0; i < numbOfEliteIndividuals; i++) {
-//            crossoverPopulation.getIndividual(i).setGenes(population.getIndividual(i).getGenes());
-            crossoverPopulation.setIndividual(i,population.getIndividual(i));
+            crossoverPopulation.setIndividual(i, population.getIndividual(i));
         }
         IIndividual individual1 = null;
         IIndividual individual2 = null;
@@ -49,7 +47,7 @@ public class SinglePointCrossover implements ICrossover {
     private Population selectTournamentPopulation(Population population) {
         Population tournamentPopulation = new Population(factory, tournamentSelectionSize, individualType);
         for (int i = 0; i < tournamentSelectionSize; i++) {
-            tournamentPopulation.setIndividual(i, population.getIndividual((int)(Math.random() * population.getIndividuals().size())));
+            tournamentPopulation.setIndividual(i, population.getIndividual((int) (Math.random() * population.getIndividuals().size())));
         }
         tournamentPopulation.sortIndividualByChromosomeFitness();
         return tournamentPopulation;

@@ -13,14 +13,32 @@ public class GeneticAlgorithmUtilsServiceTest {
 
     @Test
     public void getBinaryGenesList() {
-        //given
         String genesString = "1,1,1,1,0,0,0,0";
 
-        //when
         List<Integer> actualGenesList = GeneticAlgorithmUtilsService.getBinaryGenesList(genesString);
         List<Integer> expectedGenesList = Arrays.asList(1, 1, 1, 1, 0, 0, 0, 0);
 
-        //then
         assertThat(actualGenesList, is(expectedGenesList));
     }
+
+    @Test
+    public void getDoubleGenesList() {
+        String genesString = "0.0,0.0,0.0,0.0";
+
+        List<Double> actualGenesList = GeneticAlgorithmUtilsService.getDoubleGenesList(genesString);
+        List<Double> expectedGenesList = Arrays.asList(0.0, 0.0, 0.0, 0.0);
+
+        assertThat(actualGenesList, is(expectedGenesList));
+    }
+
+    @Test
+    public void getCharacterGenesList() {
+        String genesString = "A,B,C,D,E,F,G,H";
+
+        List<Character> actualGenesList = GeneticAlgorithmUtilsService.getCharacterGenesList(genesString);
+        List<Character> expectedGenesList = Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H');
+
+        assertThat(actualGenesList,  is(expectedGenesList));
+    }
+
 }

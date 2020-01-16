@@ -22,4 +22,5 @@ public class MutateDoubleBehavior extends IMutateBehavior{
         }
         return mutateIndividual;
     }
+
 }

@@ -57,4 +57,5 @@ public class GeneticAlgorithm implements IGeneticAlgorithm {
     public boolean terminationCondition(Population population) {
         return false;
     }
+
 }
