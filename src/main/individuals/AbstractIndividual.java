@@ -1,6 +1,5 @@
 package main.individuals;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,7 +42,5 @@ public abstract class AbstractIndividual<T> implements IIndividual<T> {
 
     @Override
     public abstract int getFitness();
-
-
 
 }

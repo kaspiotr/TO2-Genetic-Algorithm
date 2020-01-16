@@ -7,8 +7,6 @@ import main.strategy.IMutateBehavior;
 import main.strategy.MutateCharBehavior;
 import main.strategy.MutateDoubleBehavior;
 import main.strategy.MutateIntegerBehavior;
-import main.utils.GeneticAlgorithmUtilsService;
-
 
 public class BitStringMutation implements IMutation {
 

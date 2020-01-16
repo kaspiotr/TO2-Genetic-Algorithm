@@ -1,6 +1,5 @@
 package main.individuals;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface IIndividual<T> {

@@ -5,7 +5,6 @@ import main.individuals.IndividualFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Population {
 
@@ -25,12 +24,12 @@ public class Population {
         sortIndividualByChromosomeFitness();
     }
 
-    public IIndividual getIndividual(int index){
+    public IIndividual getIndividual(int index) {
         return individuals.get(index);
     }
 
-    public IIndividual setIndividual(int index,IIndividual individual){
-        return individuals.set(index,individual);
+    public IIndividual setIndividual(int index, IIndividual individual) {
+        return individuals.set(index, individual);
     }
 
     public int getPopulationSize() {
@@ -46,17 +45,15 @@ public class Population {
     }
 
     @Override
-    public String toString(){
-        String string="Population, size="+populationSize+" targetIndividual="+factory.getTargetIndividual().toString()+"\n";
-        for(int i=0;i<individuals.size();i++){
-            string+="["+i+"]"+ individuals.get(i).toString()+" individualHashcode="+ System.identityHashCode(individuals.get(i))+"\n";
+    public String toString() {
+        String string = "Population, size=" + populationSize + " targetIndividual=" + factory.getTargetIndividual().toString() + "\n";
+        for (int i = 0; i < individuals.size(); i++) {
+            string += "[" + i + "]" + individuals.get(i).toString() + " individualHashcode=" + System.identityHashCode(individuals.get(i)) + "\n";
 
         }
-        string+="\n";
+        string += "\n";
         return string;
     }
-
-
 
 
     public void sortIndividualByChromosomeFitness() {
@@ -67,4 +64,5 @@ public class Population {
             return flag;
         });
     }
+
 }

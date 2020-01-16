@@ -40,4 +40,5 @@ public class GeneticAlgorithmUtilsServiceTest {
 
         assertThat(actualGenesList,  is(expectedGenesList));
     }
+
 }

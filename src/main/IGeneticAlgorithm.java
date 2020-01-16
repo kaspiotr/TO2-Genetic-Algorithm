@@ -8,7 +8,6 @@ public interface IGeneticAlgorithm {
 
     Population createGeneration(List<IOperation> operations);
 
-
     boolean terminationCondition(Population population);
 
 }

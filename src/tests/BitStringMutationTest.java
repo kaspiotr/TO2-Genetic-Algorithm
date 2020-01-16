@@ -49,4 +49,5 @@ public class BitStringMutationTest {
         assertNotEquals(actualPopulationAfterMutation.getIndividual(2), expectedPopulationAfterMutation.getIndividual(4));
         assertNotEquals(actualPopulationAfterMutation.getIndividual(2), expectedPopulationAfterMutation.getIndividual(5));
     }
+
 }
