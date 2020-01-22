@@ -3,35 +3,35 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="154.5" y="0.0">main.individuals.IIndividual</node>
-    <node x="330.0" y="599.0">main.operations.IOperation</node>
-    <node x="433.0" y="783.0">main.operations.SinglePointCrossover</node>
-    <node x="130.0" y="177.0">main.individuals.AbstractIndividual</node>
+    <node x="154.5" y="0.0">main.main.individuals.IIndividual</node>
+    <node x="330.0" y="599.0">main.main.operations.IOperation</node>
+    <node x="433.0" y="783.0">main.main.operations.SinglePointCrossover</node>
+    <node x="130.0" y="177.0">main.main.individuals.AbstractIndividual</node>
     <node x="557.0" y="153.0">main.GeneticAlgorithm</node>
-    <node x="0.0" y="807.0">main.operations.BitStringMutation</node>
-    <node x="266.0" y="475.0">main.individuals.BinaryIndividualImpl</node>
-    <node x="138.5" y="704.0">main.operations.IMutation</node>
-    <node x="820.0" y="1052.0">main.individuals.IndividualFactory</node>
-    <node x="0.0" y="500.0">main.individuals.DoubleIndividualImpl</node>
-    <node x="646.5" y="704.0">main.operations.ICrossover</node>
+    <node x="0.0" y="807.0">main.main.operations.BitStringMutation</node>
+    <node x="266.0" y="475.0">main.main.individuals.BinaryIndividualImpl</node>
+    <node x="138.5" y="704.0">main.main.operations.IMutation</node>
+    <node x="820.0" y="1052.0">main.main.individuals.IndividualFactory</node>
+    <node x="0.0" y="500.0">main.main.individuals.DoubleIndividualImpl</node>
+    <node x="646.5" y="704.0">main.main.operations.ICrossover</node>
     <node x="557.0" y="0.0">main.IGeneticAlgorithm</node>
     <node x="0.0" y="1052.0">main.Population</node>
     <node x="974.0" y="0.0">main.view.JavaFXAppDriver</node>
-    <node x="389.0" y="1052.0">main.utils.GeneticAlgorithmUtilsService</node>
+    <node x="389.0" y="1052.0">main.main.utils.GeneticAlgorithmUtilsService</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="main.operations.SinglePointCrossover" target="main.operations.ICrossover">
+    <edge source="main.main.operations.SinglePointCrossover" target="main.main.operations.ICrossover">
       <point x="0.0" y="-112.0" />
       <point x="0.0" y="14.5" />
     </edge>
-    <edge source="main.individuals.BinaryIndividualImpl" target="main.individuals.AbstractIndividual">
+    <edge source="main.main.individuals.BinaryIndividualImpl" target="main.main.individuals.AbstractIndividual">
       <point x="0.0" y="-39.5" />
       <point x="389.0" y="450.0" />
       <point x="319.0" y="450.0" />
       <point x="63.0" y="124.0" />
     </edge>
-    <edge source="main.individuals.DoubleIndividualImpl" target="main.individuals.AbstractIndividual">
+    <edge source="main.main.individuals.DoubleIndividualImpl" target="main.main.individuals.AbstractIndividual">
       <point x="0.0" y="-14.5" />
       <point x="123.0" y="450.0" />
       <point x="193.0" y="450.0" />
@@ -41,23 +41,23 @@
       <point x="0.0" y="-172.0" />
       <point x="0.0" y="51.5" />
     </edge>
-    <edge source="main.operations.IMutation" target="main.operations.IOperation">
+    <edge source="main.main.operations.IMutation" target="main.main.operations.IOperation">
       <point x="0.0" y="-14.5" />
       <point x="206.5" y="679.0" />
       <point x="396.5" y="679.0" />
       <point x="-66.5" y="27.5" />
     </edge>
-    <edge source="main.operations.BitStringMutation" target="main.operations.IMutation">
+    <edge source="main.main.operations.BitStringMutation" target="main.main.operations.IMutation">
       <point x="0.0" y="-88.0" />
       <point x="0.0" y="14.5" />
     </edge>
-    <edge source="main.operations.ICrossover" target="main.operations.IOperation">
+    <edge source="main.main.operations.ICrossover" target="main.main.operations.IOperation">
       <point x="0.0" y="-14.5" />
       <point x="719.5" y="679.0" />
       <point x="529.5" y="679.0" />
       <point x="66.5" y="27.5" />
     </edge>
-    <edge source="main.individuals.AbstractIndividual" target="main.individuals.IIndividual">
+    <edge source="main.main.individuals.AbstractIndividual" target="main.main.individuals.IIndividual">
       <point x="0.0" y="-124.0" />
       <point x="0.0" y="63.5" />
     </edge>

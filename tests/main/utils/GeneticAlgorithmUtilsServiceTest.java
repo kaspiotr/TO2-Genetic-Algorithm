@@ -1,6 +1,5 @@
-package tests;
+package main.utils;
 
-import main.utils.GeneticAlgorithmUtilsService;
 import org.junit.Test;
 
 import java.util.Arrays;

@@ -134,7 +134,7 @@ public class JavaFXAppDriver extends Application {
         mutationRateTF = new TextField();
         mutationRateTF.setPromptText("mutation rate...");
         numberOfEliteIndividualsTF = new TextField();
-        numberOfEliteIndividualsTF.setPromptText("# of elite individuals...");
+        numberOfEliteIndividualsTF.setPromptText("# of elite main.individuals...");
         tournamentSelectionSizeTF = new TextField();
         tournamentSelectionSizeTF.setPromptText("selection size...");
         runButton = new Button("Run");

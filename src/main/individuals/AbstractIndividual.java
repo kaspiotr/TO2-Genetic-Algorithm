@@ -26,8 +26,6 @@ public abstract class AbstractIndividual<T> implements IIndividual<T> {
         genes.set(index, (T) gene);
     }
 
-
-
     @Override
     public List<T> getGenes() {
         return genes;

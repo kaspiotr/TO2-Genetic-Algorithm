@@ -16,15 +16,23 @@ public class BinaryIndividualImpl extends AbstractIndividual<Integer>{
 
         this.targetIndividual = targetIndividual;
 
-        for(int i=0;i<targetIndividual.getGenes().size();i++){
+        for (int i=0; i < targetIndividual.getGenes().size(); i++) {
             if (Math.random() >= 0.5) genes.add(i, 1);
             else genes.add(i, 0);
         }
     }
 
+    public BinaryIndividualImpl(IIndividual targetIndividual, List<Integer> genes) {
+        super();
+
+        this.genes = genes;
+        this.targetIndividual = targetIndividual;
+    }
+
     @Override
     public int getFitness() {
         int individualFitness = 0;
+
         for (int i = 0; i < targetIndividual.getGenes().size(); i++) {
             if (genes.get(i) == targetIndividual.getGene(i))
                 individualFitness++;

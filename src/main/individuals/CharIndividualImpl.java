@@ -21,6 +21,13 @@ public class CharIndividualImpl extends AbstractIndividual<Character> {
         }
     }
 
+    public CharIndividualImpl(IIndividual targetIndividual, List<Character> genes) {
+        super();
+
+        this.targetIndividual = targetIndividual;
+        this.genes = genes;
+    }
+
     @Override
     public int getFitness() {
         int similarity = 0;
