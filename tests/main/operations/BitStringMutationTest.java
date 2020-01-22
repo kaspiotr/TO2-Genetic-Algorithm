@@ -1,9 +1,8 @@
-package tests;
+package main.operations;
 
 import main.Population;
 import main.individuals.IIndividual;
 import main.individuals.IndividualFactory;
-import main.operations.BitStringMutation;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
